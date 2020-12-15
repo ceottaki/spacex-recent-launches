@@ -37,24 +37,55 @@ export class SpacexDataApiService {
    * @memberof SpacexDataApiService
    */
   private transformLaunchData(rawLaunchesData: any[]): Launch[] {
-    return rawLaunchesData.map((launch) => ({
-      missionName: launch.mission_name,
-      launchDateTime: new Date(launch.launch_date_unix * 1000),
-      rocketType: launch.rocket ? launch.rocket.rocket_type : null,
-      coresLandingAttempt:
+    return rawLaunchesData.map((launch) => {
+      // This shouldn't happen but it's belts and braces for external data.
+      // If a launch is null in the raw launches data, simply returns null.
+      if (!launch) {
+        return null;
+      }
+
+      // Combines and reduces the customers from all payloads into a single array.
+      const customers =
+        launch.rocket &&
+        launch.rocket.second_stage &&
+        launch.rocket.second_stage.payloads
+          ? launch.rocket.second_stage.payloads.reduce(
+              (acc: string[], pl: any) => [...acc, ...pl.customers],
+              []
+            )
+          : [];
+
+      // Combines all cores landing intent and success into a single value:
+      // only considers intent and success as true if all cores were true.
+      let coresLandingAttempt = false;
+      let coresLandingSuccessful = false;
+      if (
         launch.rocket &&
         launch.rocket.first_stage &&
         launch.rocket.first_stage.cores
-          ? launch.rocket.first_stage.cores[0].landing_intent
-          : false,
-      coresLandingSuccessful:
-        launch.rocket &&
-        launch.rocket.first_stage &&
-        launch.rocket.first_stage.cores
-          ? launch.rocket.first_stage.cores[0].land_success
-          : false,
-      customers: [],
-    }));
+      ) {
+        coresLandingAttempt = launch.rocket.first_stage.cores.reduce(
+          (acc: boolean, core: any) => acc && core.landing_intent,
+          true
+        );
+        coresLandingSuccessful = launch.rocket.first_stage.cores.reduce(
+          (acc: boolean, core: any) => acc && core.land_success,
+          true
+        );
+      }
+
+      return {
+        missionName: launch.mission_name,
+        launchDateTime: new Date(launch.launch_date_unix * 1000),
+        rocketType: launch.rocket ? launch.rocket.rocket_type : null,
+        coresLandingAttempt,
+        coresLandingSuccessful,
+        customers,
+        missionPatchImgUrl: launch.links
+          ? launch.links.mission_patch || launch.links.mission_patch_small
+          : null,
+      };
+    });
   }
 
   /**

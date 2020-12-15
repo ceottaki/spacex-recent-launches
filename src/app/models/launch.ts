@@ -5,4 +5,5 @@ export interface Launch {
   coresLandingAttempt: boolean;
   coresLandingSuccessful: boolean;
   customers: string[];
+  missionPatchImgUrl?: string;
 }
