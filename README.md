@@ -16,7 +16,8 @@ These are the currently identified areas for improvement:
 
 - Updating the service to use [SpaceX Data API V4](https://github.com/r-spacex/SpaceX-API/tree/master/docs/v4)
 - Increase test coverage (a few "TODO" items have already been added to the code)
-- I18n.
+- I18n
+- E2E tests
 
 ### Development server
 
