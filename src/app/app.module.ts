@@ -5,10 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LaunchComponent } from './launch/launch.component';
+import { LaunchCollectionComponent } from './launch-collection/launch-collection.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LaunchComponent,
+    LaunchCollectionComponent
   ],
   imports: [
     BrowserModule,
