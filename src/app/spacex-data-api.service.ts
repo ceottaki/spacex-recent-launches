@@ -14,6 +14,13 @@ export class SpacexDataApiService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Gets the last N launches from the external API.
+   *
+   * @param {number} [numberLaunches=10] The number of last launches to get.
+   * @returns {Observable<Launch[]>} An observable that provides the last launches requested.
+   * @memberof SpacexDataApiService
+   */
   getLastLaunches(numberLaunches: number = 10): Observable<Launch[]> {
     return this.http.get<any[]>(`${this.launchesUrl}${numberLaunches}`).pipe(
       map((rawLaunches) => this.transformLaunchData(rawLaunches)),
@@ -21,6 +28,14 @@ export class SpacexDataApiService {
     );
   }
 
+  /**
+   * Transforms raw launch data received from the external API into the format of the model used by this application.
+   *
+   * @private
+   * @param {any[]} rawLaunchesData The raw launches data received from the external API.
+   * @returns {Launch[]} The list of launches in the format used by this application.
+   * @memberof SpacexDataApiService
+   */
   private transformLaunchData(rawLaunchesData: any[]): Launch[] {
     return rawLaunchesData.map((launch) => ({
       missionName: launch.mission_name,
@@ -43,8 +58,8 @@ export class SpacexDataApiService {
   }
 
   /**
-   * Handle Http operation that failed.
-   * Let the app continue.
+   * Handles a http operation that has failed and lets the app continue by returning a given default result.
+   *
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
