@@ -9,6 +9,7 @@ import { LaunchComponent } from './launch/launch.component';
 import { LaunchCollectionComponent } from './launch-collection/launch-collection.component';
 import { ArrayJoinPipe } from './array-join.pipe';
 import { BoolToYesNoPipe } from './bool-to-yes-no.pipe';
+import { LaunchDetailsModalComponent } from './launch-details-modal/launch-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BoolToYesNoPipe } from './bool-to-yes-no.pipe';
     LaunchComponent,
     LaunchCollectionComponent,
     ArrayJoinPipe,
-    BoolToYesNoPipe
+    BoolToYesNoPipe,
+    LaunchDetailsModalComponent
   ],
   imports: [
     BrowserModule,

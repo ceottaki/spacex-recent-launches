@@ -1,0 +1,77 @@
+<div class="modal-header">
+  <h3 class="modal-title w-100 pr-4" id="mission-dialog-title">
+    {{ launch.missionName }}
+    <span *ngIf="launch.missionPatchImgUrl" class="float-right"
+      ><img
+        [src]="launch.missionPatchImgUrl"
+        height="42"
+        class="p-1"
+        [alt]="launch.missionName"
+        [attr.aria-label]="launch.missionName"
+    /></span>
+  </h3>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p id="mission-dialog-description">{{ launch.details }}</p>
+  <p>
+    <span
+      >Launched:
+      <span class="font-weight-bold">{{
+        launch.launchDateTime | date: "short"
+      }}</span></span
+    ><br />
+    <span
+      >Rocket:
+      <span class="font-weight-bold">{{ launch.rocketName }}</span></span
+    ><br />
+    <span
+      >Customers:
+      <span class="font-weight-bold">{{
+        launch.customers | arrayJoin: ", "
+      }}</span></span
+    ><br />
+    <span *ngIf="launch.coresLandingAttempt"
+      >Landing successful:
+      <span class="font-weight-bold">{{
+        launch.coresLandingSuccessful | boolToYesNo | lowercase
+      }}</span></span
+    >
+  </p>
+  <div *ngIf="launch.imageUrls.length">
+    <ngb-carousel [interval]="2000" [pauseOnHover]="true" [pauseOnFocus]="true">
+      <ng-template ngbSlide *ngFor="let img of launch.imageUrls; index as i">
+        <a [href]="img" target="_blank" rel="nofollow noopener noreferrer">
+          <div class="w-100">
+            <img
+              class="img-fluid"
+              [src]="img"
+              alt="Image {{ i + 1 }} of {{
+                launch.imageUrls.length
+              }} of SpaceX mission {{ launch.missionName }}."
+            />
+          </div>
+        </a>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <div *ngIf="!launch.imageUrls.length" class="text-muted">
+    No images available.
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.close('Close click')"
+  >
+    Close
+  </button>
+</div>
