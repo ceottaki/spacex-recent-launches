@@ -1,4 +1,4 @@
-<div class="modal-header">
+<div *ngIf="launch" class="modal-header">
   <h3 class="modal-title w-100 pr-4" id="mission-dialog-title">
     {{ launch.missionName }}
     <span *ngIf="launch.missionPatchImgUrl" class="float-right"
@@ -19,7 +19,7 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
+<div *ngIf="launch" class="modal-body">
   <p id="mission-dialog-description">{{ launch.details }}</p>
   <p>
     <span
@@ -66,7 +66,7 @@
     No images available.
   </div>
 </div>
-<div class="modal-footer">
+<div *ngIf="launch" class="modal-footer">
   <button
     type="button"
     class="btn btn-outline-dark"

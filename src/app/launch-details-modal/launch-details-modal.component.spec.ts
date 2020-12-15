@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LaunchDetailsModalComponent } from './launch-details-modal.component';
+import { ArrayJoinPipe } from '../array-join.pipe';
+import { BoolToYesNoPipe } from '../bool-to-yes-no.pipe';
 
 describe('LaunchDetailsModalComponent', () => {
   let component: LaunchDetailsModalComponent;
@@ -8,9 +11,14 @@ describe('LaunchDetailsModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LaunchDetailsModalComponent ]
-    })
-    .compileComponents();
+      declarations: [
+        ArrayJoinPipe,
+        BoolToYesNoPipe,
+        LaunchDetailsModalComponent,
+      ],
+      imports: [NgbModule],
+      providers: [NgbActiveModal],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +30,6 @@ describe('LaunchDetailsModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO: Test component's output against given inputs.
 });
