@@ -9,7 +9,7 @@ import { Launch } from './models/launch';
   providedIn: 'root',
 })
 export class SpacexDataApiService {
-  private launchesUrl =
+  public launchesUrl =
     'https://api.spacexdata.com/v3/launches/past?sort=flight_number&order=desc&limit=';
 
   constructor(private http: HttpClient) {}
