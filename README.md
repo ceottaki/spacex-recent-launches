@@ -10,10 +10,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Other than Angular, the only library added was [ng-bootstrap](https://ng-bootstrap.github.io/), as this project was done in the very little free time available and using Bootstrap allows for rapidly creating a good presentation that is mobile-friendly as well as more easily addressing accessibility concerns.
 
+There is a single service that accesses the external API and processes its data, which is then displayed by the application. The app component provides a basic framework where the launches collection component sits, displaying all launches by using several launch components. For further details and images on each launch, a launch details modal component is also used.
+
 ### Continuing development
 
 These are the currently identified areas for improvement:
 
+- Adding a messaging service to inform the user of errors, etc
 - Updating the service to use [SpaceX Data API V4](https://github.com/r-spacex/SpaceX-API/tree/master/docs/v4)
 - Increase test coverage (a few "TODO" items have already been added to the code)
 - I18n
@@ -42,3 +45,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## License
+
+MIT https://ceottaki.mit-license.org/
