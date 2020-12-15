@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LaunchComponent } from './launch/launch.component';
 import { LaunchCollectionComponent } from './launch-collection/launch-collection.component';
+import { ArrayJoinPipe } from './array-join.pipe';
+import { BoolToYesNoPipe } from './bool-to-yes-no.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaunchComponent,
-    LaunchCollectionComponent
+    LaunchCollectionComponent,
+    ArrayJoinPipe,
+    BoolToYesNoPipe
   ],
   imports: [
     BrowserModule,

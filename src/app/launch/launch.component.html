@@ -1,3 +1,52 @@
-<div>
-  {{ launch.missionName }}
+<div *ngIf="launch" class="card mb-4 shadow-sm">
+  <img
+    *ngIf="launch.missionPatchImgUrl"
+    [src]="launch.missionPatchImgUrl"
+    class="card-img-top"
+    width="100%"
+    height="348"
+    [alt]="launch.missionName"
+    [attr.aria-label]="launch.missionName"
+  />
+  <svg
+    *ngIf="!launch.missionPatchImgUrl"
+    class="card-img-top"
+    width="100%"
+    height="348"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid slice"
+    focusable="false"
+    role="img"
+    [attr.aria-label]="launch.missionName"
+    style="text-anchor: middle"
+  >
+    <title>{{ launch.missionName }}</title>
+    <rect width="100%" height="100%" fill="#55595c"></rect>
+    <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+      {{ launch.missionName }}
+    </text>
+  </svg>
+  <div class="card-body">
+    <h5 class="card-title">{{ launch.missionName }}</h5>
+    <p class="card-text">
+      <span>Rocket type: {{ launch.rocketType }}</span
+      ><br />
+      <span>Customers: {{ launch.customers | arrayJoin: ", " }}</span
+      ><br />
+      <span *ngIf="launch.coresLandingAttempt"
+        >Landing successful:
+        {{ launch.coresLandingSuccessful | boolToYesNo | lowercase }}</span
+      >
+    </p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-outline-primary">
+          View Details
+        </button>
+      </div>
+      <small class="text-muted"
+        >Launched: {{ launch.launchDateTime | date: "short" }}</small
+      >
+    </div>
+  </div>
 </div>

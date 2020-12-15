@@ -1,3 +1,7 @@
-<div *ngFor="let launch of launches">
-  <atos-launch [launch]="launch"></atos-launch>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let launch of launches">
+      <atos-launch [launch]="launch"></atos-launch>
+    </div>
+  </div>
 </div>

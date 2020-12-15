@@ -1,5 +1,19 @@
-<h1>SpaceX Recent Launches</h1>
+<header>
+  <nav class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container-fluid">
+      <div class="navbar-brand">SpaceX Recent Launches</div>
+    </div>
+  </nav>
+</header>
 
-<atos-launch-collection [launches]="launches"></atos-launch-collection>
-
-<router-outlet></router-outlet>
+<main>
+  <section class="container py-2 text-center">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>Last {{ numLaunches }} Launches</h1>
+      </div>
+    </div>
+  </section>
+  <atos-launch-collection [launches]="launches"></atos-launch-collection>
+  <router-outlet></router-outlet>
+</main>

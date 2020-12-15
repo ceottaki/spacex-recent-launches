@@ -9,13 +9,16 @@ import { SpacexDataApiService } from './spacex-data-api.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  numLaunches = 10;
   launches: Launch[];
 
   constructor(private spacexDataApiService: SpacexDataApiService) {}
 
   ngOnInit(): void {
-    this.spacexDataApiService.getLastLaunches(10).subscribe((launches) => {
-      this.launches = launches;
-    });
+    this.spacexDataApiService
+      .getLastLaunches(this.numLaunches)
+      .subscribe((launches) => {
+        this.launches = launches;
+      });
   }
 }
