@@ -15,5 +15,6 @@
     </div>
   </section>
   <atos-launch-collection [launches]="launches"></atos-launch-collection>
+  <div *ngIf="!launches.length" class="text-center">No launches loaded.</div>
   <router-outlet></router-outlet>
 </main>
