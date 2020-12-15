@@ -75,12 +75,17 @@ export class SpacexDataApiService {
         missionName: launch.mission_name,
         launchDateTime: new Date(launch.launch_date_unix * 1000),
         rocketType: launch.rocket ? launch.rocket.rocket_type : null,
+        rocketName: launch.rocket ? launch.rocket.rocket_name : null,
         coresLandingAttempt,
         coresLandingSuccessful,
         customers,
         missionPatchImgUrl: launch.links
           ? launch.links.mission_patch || launch.links.mission_patch_small
           : null,
+        details: launch.details,
+        wikipediaUrl: launch.links ? launch.links.wikipedia : null,
+        videoLink: launch.links ? launch.links.video_link : null,
+        imageUrls: launch.links ? launch.links.flickr_images : [],
       };
     });
   }
@@ -97,6 +102,8 @@ export class SpacexDataApiService {
   ): (error: any) => Observable<T> {
     return (error: any): Observable<T> => {
       console.error(operation, error); // Ideally we would log to a logging infrastructure and not to the console.
+
+      // TODO: Use a message service to inform the app about the error and let the app graciously inform the user.
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
