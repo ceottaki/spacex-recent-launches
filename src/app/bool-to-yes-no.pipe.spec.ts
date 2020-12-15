@@ -5,4 +5,6 @@ describe('BoolToYesNoPipe', () => {
     const pipe = new BoolToYesNoPipe();
     expect(pipe).toBeTruthy();
   });
+
+  // TODO: Test pipe functionality.
 });

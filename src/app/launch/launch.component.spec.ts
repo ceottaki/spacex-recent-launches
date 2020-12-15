@@ -8,9 +8,8 @@ describe('LaunchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LaunchComponent ]
-    })
-    .compileComponents();
+      declarations: [LaunchComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -22,4 +21,6 @@ describe('LaunchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO: Test component's output against given inputs.
 });

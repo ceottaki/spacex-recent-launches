@@ -5,4 +5,6 @@ describe('ArrayJoinPipe', () => {
     const pipe = new ArrayJoinPipe();
     expect(pipe).toBeTruthy();
   });
+
+  // TODO: Test pipe functionality.
 });
