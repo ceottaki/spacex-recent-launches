@@ -17,9 +17,8 @@ export class SpacexDataApiService {
   /**
    * Gets the last N launches from the external API.
    *
-   * @param {number} [numberLaunches=10] The number of last launches to get.
-   * @returns {Observable<Launch[]>} An observable that provides the last launches requested.
-   * @memberof SpacexDataApiService
+   * @param numberLaunches The number of last launches to get. Defaults to 10.
+   * @returns An observable that provides the last launches requested.
    */
   getLastLaunches(numberLaunches: number = 10): Observable<Launch[]> {
     return this.http.get<any[]>(`${this.launchesUrl}${numberLaunches}`).pipe(
@@ -31,10 +30,8 @@ export class SpacexDataApiService {
   /**
    * Transforms raw launch data received from the external API into the format of the model used by this application.
    *
-   * @private
-   * @param {any[]} rawLaunchesData The raw launches data received from the external API.
-   * @returns {Launch[]} The list of launches in the format used by this application.
-   * @memberof SpacexDataApiService
+   * @param rawLaunchesData The raw launches data received from the external API.
+   * @returns The list of launches in the format used by this application.
    */
   private transformLaunchData(rawLaunchesData: any[]): Launch[] {
     return rawLaunchesData.map((launch) => {
