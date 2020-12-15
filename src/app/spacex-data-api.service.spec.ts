@@ -6,6 +6,7 @@ import {
 
 import { SpacexDataApiService } from './spacex-data-api.service';
 import mockData from '../assets/mock-data.json';
+import { mockProcessedData } from '../assets/mock-processed-data';
 
 describe('SpacexDataApiService', () => {
   let service: SpacexDataApiService;
@@ -30,7 +31,7 @@ describe('SpacexDataApiService', () => {
 
     service.getLastLaunches(numLaunches).subscribe((launches) => {
       expect(launches.length).toBe(numLaunches);
-      // expect(launches).toEqual(mockData); // We need the transformed data.
+      expect(launches).toEqual(mockProcessedData);
     });
 
     const request = httpMock.expectOne(`${service.launchesUrl}${numLaunches}`);
