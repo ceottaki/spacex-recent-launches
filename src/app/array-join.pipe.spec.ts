@@ -6,5 +6,8 @@ describe('ArrayJoinPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  // TODO: Test pipe functionality.
+  it('transforms an array to a string joined by a given character', () => {
+    const pipe = new ArrayJoinPipe();
+    expect(pipe.transform(['a', 'b'], ',')).toBe('a,b');
+  });
 });

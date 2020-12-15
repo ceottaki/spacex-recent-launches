@@ -6,5 +6,18 @@ describe('BoolToYesNoPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  // TODO: Test pipe functionality.
+  it('transforms true to "Yes"', () => {
+    const pipe = new BoolToYesNoPipe();
+    expect(pipe.transform(true)).toBe('Yes');
+  });
+
+  it('transforms false to "No"', () => {
+    const pipe = new BoolToYesNoPipe();
+    expect(pipe.transform(false)).toBe('No');
+  });
+
+  it('throws an error when second argument has less than two elements', () => {
+    const pipe = new BoolToYesNoPipe();
+    expect(() => pipe.transform(true, ['Yes'])).toThrowError();
+  });
 });
