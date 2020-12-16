@@ -1,4 +1,4 @@
-<div *ngIf="launch" class="card mb-4 shadow-sm">
+<div *ngIf="launch" class="launch-card card mb-4 shadow-sm">
   <img
     *ngIf="launch.missionPatchImgUrl"
     [src]="launch.missionPatchImgUrl"
@@ -27,7 +27,7 @@
     </text>
   </svg>
   <div class="card-body">
-    <h5 class="card-title">{{ launch.missionName }}</h5>
+    <h2 class="card-title">{{ launch.missionName }}</h2>
     <p class="card-text">
       <span>Rocket type: {{ launch.rocketType }}</span
       ><br />
@@ -42,7 +42,7 @@
       <div class="btn-group">
         <button
           type="button"
-          class="btn btn-sm btn-outline-primary"
+          class="btn btn-sm btn-outline-dark"
           (click)="openDetails()"
         >
           View Details
