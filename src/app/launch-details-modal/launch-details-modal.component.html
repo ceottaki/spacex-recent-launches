@@ -20,7 +20,27 @@
   </button>
 </div>
 <div *ngIf="launch" class="modal-body">
-  <p id="mission-dialog-description">{{ launch.details }}</p>
+  <p id="mission-dialog-description">
+    {{ launch.details }}
+    <span *ngIf="launch.wikipediaUrl"
+      ><br />See more details on
+      <a
+        [href]="launch.wikipediaUrl"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        >Wikipedia</a
+      >.</span
+    >
+    <span *ngIf="launch.videoLink"
+      ><br />Watch the
+      <a
+        [href]="launch.videoLink"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        >launch video</a
+      >.</span
+    >
+  </p>
   <p>
     <span
       >Launched:
